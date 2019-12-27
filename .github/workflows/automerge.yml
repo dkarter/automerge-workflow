@@ -1,8 +1,6 @@
 name: AutoMerge
 
-on:
-  check_run:
-    types: [completed]
+on: [push]
 
 jobs:
   check-merge:
