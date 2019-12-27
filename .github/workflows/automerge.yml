@@ -1,15 +1,14 @@
 name: AutoMerge
 
-on: [push]
+on:
+  - pull_request
 
 jobs:
   check-merge:
     runs-on: ubuntu-latest
 
     steps:
-    - name: show context
-      run: echo "${{ github }}"
-    - name: Run a multi-line script
-      run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
+    - name: 'Run JS'
+      uses: dkarter/automerge-workflow@setup-workflow
+      with:
+        who-to-greet: 'Mona the Octocat'
