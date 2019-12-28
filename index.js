@@ -41,7 +41,9 @@ try {
 
   // TODO: check if update is actually required before calling it
   if (shouldUpdateBranch) {
-    await updateBranch(client, pullRequest.number);
+    updateBranch(client, pullRequest.number).then(x =>
+      logObject('update response', x)
+    );
   }
 
   core.setOutput('shouldMerge', merge);
