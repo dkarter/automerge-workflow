@@ -8,7 +8,7 @@ function shouldMerge(pullRequest, mergeLabel) {
   console.log('mergeLabel', JSON.stringify(mergeLabel, undefined, 2));
 
   return (
-    labels.includes(mergeLabel) &&
+    labels.find(label => label.name == mergeLabel) &&
     state == 'open' &&
     !draft &&
     mergeableState == 'mergeable'
