@@ -22,6 +22,11 @@ function logObject(label, thing) {
   console.log(label, JSON.stringify(thing, undefined, 2));
 }
 
+async function updateBranch(client, prNumber) {
+  console.log('Updating branch.....................');
+  await client.pulls.updateBranch(prNumber);
+}
+
 try {
   const mergeLabel = core.getInput('mergeLabel', { required: true });
   const token = core.getInput('repoToken', { required: true });
@@ -36,8 +41,7 @@ try {
 
   // TODO: check if update is actually required before calling it
   if (shouldUpdateBranch) {
-    console.log('Updating branch.....................');
-    client.pulls.updateBranch();
+    await updateBranch(client, pullRequest.number);
   }
 
   core.setOutput('shouldMerge', merge);
