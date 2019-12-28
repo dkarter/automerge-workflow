@@ -12,3 +12,6 @@ jobs:
       uses: dkarter/automerge-workflow@setup-workflow
       with:
         mergeLabel: 'Ready To Merge'
+        shouldUpdateBranch: true
+        repoToken: "${{ secrets.GITHUB_TOKEN }}"
+
