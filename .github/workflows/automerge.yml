@@ -11,4 +11,4 @@ jobs:
     - name: 'Run JS'
       uses: dkarter/automerge-workflow@setup-workflow
       with:
-        who-to-greet: 'Mona the Octocat'
+        mergeLabel: 'Ready To Merge'
