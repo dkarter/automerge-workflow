@@ -1,18 +1,17 @@
 name: AutoMerge
 
 on:
-  check_run:
-    types: [completed]
+  - pull_request
 
 jobs:
   check-merge:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
-    - name: show context
-      run: echo "${{ github }}"
-    - name: Run a multi-line script
-      run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
+    - name: 'Run JS'
+      uses: dkarter/automerge-workflow@setup-workflow
+      with:
+        mergeLabel: 'Ready To Merge'
+        shouldUpdateBranch: true
+        repoToken: "${{ secrets.GITHUB_TOKEN }}"
+
